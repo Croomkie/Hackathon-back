@@ -8,9 +8,25 @@ namespace CollectEats.Api.Profiles
     {
         public MappingProfile()
         {
+            /***** Mappage pour Atelier *****/
+            CreateMap<Atelier, AtelierDTO>();
+            CreateMap<AtelierDTO, Atelier>();
+
+            /***** Mappage pour Ecole *****/
+            CreateMap<Ecole, EcoleDTO>();
+            CreateMap<EcoleDTO, Ecole>();
+
+            /***** Mappage pour Vin *****/
+            CreateMap<Vin, VinDTO>();
+            CreateMap<VinDTO, Vin>();
+
             /***** Mappage pour Utilisateur *****/
             CreateMap<Utilisateur, UtilisateurDTO>();
             CreateMap<UtilisateurDTO, Utilisateur>();
+
+            /***** Mappage pour Visiteur *****/
+            CreateMap<Visiteur, VisiteurDTO>();
+            CreateMap<VisiteurDTO, Visiteur>();
         }
     }
 }

@@ -12,7 +12,7 @@ namespace Hackathon.Data.Repositories
             _context = context;
         }
 
-        public async Task<T?> GetById(Guid id)
+        public async Task<T?> GetById(int id)
         {
             return await _context.Set<T>().FindAsync(id);
         }

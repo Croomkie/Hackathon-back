@@ -2,7 +2,7 @@
 {
     public interface IRepository<T>
     {
-        Task<T?> GetById(Guid id);
+        Task<T?> GetById(int id);
         Task<IEnumerable<T>> GetAll();
         Task Add(T entity);
         Task SaveChanges();

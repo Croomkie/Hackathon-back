@@ -1,4 +1,6 @@
 using CollectEats.Api.Profiles;
+using Hackathon.Core.Interfaces;
+using Hackathon.Core.Services;
 using Hackathon.Data;
 using Hackathon.Data.Interfaces;
 using Hackathon.Data.Models;
@@ -65,7 +67,7 @@ builder.Services.AddIdentityApiEndpoints<Utilisateur>().AddRoles<IdentityRole>()
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 //Injection de dependance
-//builder.Services.AddScoped<IUtilisateurService, UtilisateurService>();
+builder.Services.AddScoped<IAtelierService, AtelierService>();
 
 //Repository
 //builder.Services.AddScoped<IUtilisateurRepository, UtilisateurRepository>();

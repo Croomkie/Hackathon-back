@@ -4,12 +4,12 @@
     {
         Task<IEnumerable<TDto>> GetAll();
 
-        Task<TDto> GetById(Guid id);
+        Task<TDto> GetById(int id);
 
         Task Add(TDto modelDTO);
 
-        Task Update(Guid id, TDto modelDTO);
+        Task Update(int id, TDto modelDTO);
 
-        Task Delete(Guid id);
+        Task Delete(int id);
     }
 }

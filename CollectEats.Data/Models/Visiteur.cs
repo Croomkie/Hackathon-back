@@ -1,6 +1,4 @@
-﻿using Hackathon.Shared.Enum;
-
-namespace Hackathon.Data.Models
+﻿namespace Hackathon.Data.Models
 {
     public class Visiteur
     {

@@ -21,7 +21,7 @@ namespace Hackathon.Core.Services
             return _mapper.Map<IEnumerable<TDto>>(model);
         }
 
-        public async Task<TDto> GetById(Guid id)
+        public async Task<TDto> GetById(int id)
         {
             var model = await _repository.GetById(id);
             return _mapper.Map<TDto>(model);
@@ -34,7 +34,7 @@ namespace Hackathon.Core.Services
             await _repository.SaveChanges();
         }
 
-        public async Task Update(Guid id, TDto modelDTO)
+        public async Task Update(int id, TDto modelDTO)
         {
             var model = await _repository.GetById(id);
             if (model != null)
@@ -45,7 +45,7 @@ namespace Hackathon.Core.Services
             }
         }
 
-        public async Task Delete(Guid id)
+        public async Task Delete(int id)
         {
             var restaurant = await _repository.GetById(id);
             if (restaurant != null)
