@@ -12,6 +12,7 @@
         public string Ressource { get; set; } = string.Empty;
 
         //Relation
+        public int? EcoleId { get; set; }
         public EcoleDTO? Ecole { get; set; }
     }
 }

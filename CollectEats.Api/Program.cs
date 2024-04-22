@@ -5,7 +5,6 @@ using Hackathon.Data;
 using Hackathon.Data.Interfaces;
 using Hackathon.Data.Models;
 using Hackathon.Data.Repositories;
-using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
@@ -70,6 +69,7 @@ builder.Services.AddAutoMapper(typeof(MappingProfile));
 builder.Services.AddScoped<IAtelierService, AtelierService>();
 builder.Services.AddScoped<IVinService, VinService>();
 builder.Services.AddScoped<IEcoleService, EcoleService>();
+builder.Services.AddScoped<IVisiteurService, VisiteurService>();
 
 //Repository
 //builder.Services.AddScoped<IUtilisateurRepository, UtilisateurRepository>();

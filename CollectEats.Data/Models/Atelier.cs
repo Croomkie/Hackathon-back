@@ -14,7 +14,7 @@
         //Relation
         public string? UtilisateurId { get; set; }
         public Utilisateur? Utilisateur { get; set; }
-        public int EcoleId { get; set; }
+        public int? EcoleId { get; set; }
         public Ecole? Ecole { get; set; }
         public virtual ICollection<Visiteur>? Visiteur { get; set; }
     }
