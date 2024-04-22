@@ -13,10 +13,19 @@ namespace Hackathon.Data
         }
 
         public DbSet<Utilisateur> Utilisateurs { get; set; }
+        public DbSet<Atelier> Ateliers { get; set; }
+        public DbSet<Vin> Vins { get; set; }
+        public DbSet<Visiteur> Visiteurs { get; set; }
+        public DbSet<AtelierVisiteur> AtelierVisiteurs { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Atelier>()
+                .HasMany(a => a.Visiteur)
+                .WithMany(v => v.Atelier)
+                .UsingEntity<AtelierVisiteur>();
         }
     }
 }

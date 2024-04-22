@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Hackathon.Data.Models;
+using Hackathon.DTOs;
 
 namespace CollectEats.Api.Profiles
 {
@@ -7,8 +9,8 @@ namespace CollectEats.Api.Profiles
         public MappingProfile()
         {
             /***** Mappage pour Utilisateur *****/
-            //CreateMap<Utilisateur, UtilisateurDTO>();
-            //CreateMap<UtilisateurDTO, Utilisateur>();
+            CreateMap<Utilisateur, UtilisateurDTO>();
+            CreateMap<UtilisateurDTO, Utilisateur>();
         }
     }
 }

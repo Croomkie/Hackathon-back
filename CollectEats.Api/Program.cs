@@ -3,6 +3,7 @@ using Hackathon.Data;
 using Hackathon.Data.Interfaces;
 using Hackathon.Data.Models;
 using Hackathon.Data.Repositories;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
@@ -10,6 +11,17 @@ using OpenTelemetry.Metrics;
 using Swashbuckle.AspNetCore.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("CorsPolicy", builder =>
+    {
+        builder.WithOrigins("http://localhost:3000")
+               .AllowAnyMethod()
+               .AllowAnyHeader()
+               .AllowCredentials();
+    });
+});
 
 builder.Services.AddOpenTelemetry()
     .WithMetrics(builder =>
@@ -79,6 +91,8 @@ if (app.Environment.IsDevelopment())
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "CollectEats");
     });
 }
+
+app.UseCors("CorsPolicy");
 
 app.MapGroup("api").MapIdentityApi<Utilisateur>().WithTags("identity");
 
