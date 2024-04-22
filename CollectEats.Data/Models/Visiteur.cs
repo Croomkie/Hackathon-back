@@ -8,6 +8,8 @@ namespace Hackathon.Data.Models
         public string Email { get; set; } = string.Empty;
 
         //Relation
+        public int EcoleId { get; set; }
+        public Ecole? Ecole { get; set; }
         public virtual ICollection<Atelier>? Atelier { get; set; }
     }
 }

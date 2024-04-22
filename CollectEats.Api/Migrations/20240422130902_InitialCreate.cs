@@ -54,6 +54,19 @@ namespace Hackathon.Api.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Ecoles",
+                columns: table => new
+                {
+                    EcoleId = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    EcoleName = table.Column<string>(type: "text", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Ecoles", x => x.EcoleId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Vins",
                 columns: table => new
                 {
@@ -69,19 +82,6 @@ namespace Hackathon.Api.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Vins", x => x.VinId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Visiteurs",
-                columns: table => new
-                {
-                    VisiteurId = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Email = table.Column<string>(type: "text", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Visiteurs", x => x.VisiteurId);
                 });
 
             migrationBuilder.CreateTable(
@@ -203,7 +203,8 @@ namespace Hackathon.Api.Migrations
                     Nombre_participant = table.Column<int>(type: "integer", nullable: false),
                     Thematique = table.Column<string>(type: "text", nullable: false),
                     Ressource = table.Column<string>(type: "text", nullable: false),
-                    UtilisateurId = table.Column<string>(type: "text", nullable: true)
+                    UtilisateurId = table.Column<string>(type: "text", nullable: true),
+                    EcoleId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -213,6 +214,32 @@ namespace Hackathon.Api.Migrations
                         column: x => x.UtilisateurId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Ateliers_Ecoles_EcoleId",
+                        column: x => x.EcoleId,
+                        principalTable: "Ecoles",
+                        principalColumn: "EcoleId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Visiteurs",
+                columns: table => new
+                {
+                    VisiteurId = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Email = table.Column<string>(type: "text", nullable: false),
+                    EcoleId = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Visiteurs", x => x.VisiteurId);
+                    table.ForeignKey(
+                        name: "FK_Visiteurs_Ecoles_EcoleId",
+                        column: x => x.EcoleId,
+                        principalTable: "Ecoles",
+                        principalColumn: "EcoleId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -283,9 +310,19 @@ namespace Hackathon.Api.Migrations
                 column: "VisiteurId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Ateliers_EcoleId",
+                table: "Ateliers",
+                column: "EcoleId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Ateliers_UtilisateurId",
                 table: "Ateliers",
                 column: "UtilisateurId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Visiteurs_EcoleId",
+                table: "Visiteurs",
+                column: "EcoleId");
         }
 
         /// <inheritdoc />
@@ -323,6 +360,9 @@ namespace Hackathon.Api.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Ecoles");
         }
     }
 }

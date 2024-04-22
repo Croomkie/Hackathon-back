@@ -46,6 +46,9 @@ namespace Hackathon.Api.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<int>("EcoleId")
+                        .HasColumnType("integer");
+
                     b.Property<int>("Nombre_participant")
                         .HasColumnType("integer");
 
@@ -61,6 +64,8 @@ namespace Hackathon.Api.Migrations
                         .HasColumnType("text");
 
                     b.HasKey("AtelierId");
+
+                    b.HasIndex("EcoleId");
 
                     b.HasIndex("UtilisateurId");
 
@@ -83,6 +88,23 @@ namespace Hackathon.Api.Migrations
                     b.HasIndex("VisiteurId");
 
                     b.ToTable("AtelierVisiteurs");
+                });
+
+            modelBuilder.Entity("Hackathon.Data.Models.Ecole", b =>
+                {
+                    b.Property<int>("EcoleId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("EcoleId"));
+
+                    b.Property<string>("EcoleName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("EcoleId");
+
+                    b.ToTable("Ecoles");
                 });
 
             modelBuilder.Entity("Hackathon.Data.Models.Utilisateur", b =>
@@ -199,11 +221,16 @@ namespace Hackathon.Api.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("VisiteurId"));
 
+                    b.Property<int>("EcoleId")
+                        .HasColumnType("integer");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("VisiteurId");
+
+                    b.HasIndex("EcoleId");
 
                     b.ToTable("Visiteurs");
                 });
@@ -342,9 +369,17 @@ namespace Hackathon.Api.Migrations
 
             modelBuilder.Entity("Hackathon.Data.Models.Atelier", b =>
                 {
+                    b.HasOne("Hackathon.Data.Models.Ecole", "Ecole")
+                        .WithMany()
+                        .HasForeignKey("EcoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Hackathon.Data.Models.Utilisateur", "Utilisateur")
                         .WithMany()
                         .HasForeignKey("UtilisateurId");
+
+                    b.Navigation("Ecole");
 
                     b.Navigation("Utilisateur");
                 });
@@ -362,6 +397,17 @@ namespace Hackathon.Api.Migrations
                         .HasForeignKey("VisiteurId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Hackathon.Data.Models.Visiteur", b =>
+                {
+                    b.HasOne("Hackathon.Data.Models.Ecole", "Ecole")
+                        .WithMany()
+                        .HasForeignKey("EcoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Ecole");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

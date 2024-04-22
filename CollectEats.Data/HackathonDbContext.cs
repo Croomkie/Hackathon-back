@@ -17,6 +17,7 @@ namespace Hackathon.Data
         public DbSet<Vin> Vins { get; set; }
         public DbSet<Visiteur> Visiteurs { get; set; }
         public DbSet<AtelierVisiteur> AtelierVisiteurs { get; set; }
+        public DbSet<Ecole> Ecoles { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
