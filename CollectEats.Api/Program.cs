@@ -68,6 +68,7 @@ builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 //Injection de dependance
 builder.Services.AddScoped<IAtelierService, AtelierService>();
+builder.Services.AddScoped<IVinService, VinService>();
 
 //Repository
 //builder.Services.AddScoped<IUtilisateurRepository, UtilisateurRepository>();
