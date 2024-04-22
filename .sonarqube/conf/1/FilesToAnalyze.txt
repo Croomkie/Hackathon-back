@@ -1,0 +1,13 @@
+﻿C:\Dev\CollectEats\CollectEats.DTOs\ArticleMenuDTO.cs
+C:\Dev\CollectEats\CollectEats.DTOs\CategorieDTO.cs
+C:\Dev\CollectEats\CollectEats.DTOs\ChoixUtilisateurOptionDTO.cs
+C:\Dev\CollectEats\CollectEats.DTOs\CommandeDTO.cs
+C:\Dev\CollectEats\CollectEats.DTOs\DetailCommandeDTO.cs
+C:\Dev\CollectEats\CollectEats.DTOs\EvaluationDTO.cs
+C:\Dev\CollectEats\CollectEats.DTOs\FavoriDTO.cs
+C:\Dev\CollectEats\CollectEats.DTOs\MenuDTO.cs
+C:\Dev\CollectEats\CollectEats.DTOs\OptionPersonnalisationDTO.cs
+C:\Dev\CollectEats\CollectEats.DTOs\PromotionDTO.cs
+C:\Dev\CollectEats\CollectEats.DTOs\RestaurantDTO.cs
+C:\Dev\CollectEats\CollectEats.DTOs\UtilisateurDTO.cs
+C:\Dev\CollectEats\CollectEats.DTOs\VarianteOptionDTO.cs
