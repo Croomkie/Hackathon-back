@@ -24,6 +24,13 @@ namespace Hackathon.Api.Controllers
             return await _visiteurService.GetAll();
         }
 
+        // GET: api/<VisiteurController>
+        [HttpGet("Email/{evenementId}")]
+        public async Task<IList<string>> GetEmail(int evenementId)
+        {
+            return await _visiteurService.ListeEmailVisiteurEvenement(evenementId);
+        }
+
         // GET api/<VisiteurController>/5
         [HttpGet("{id}")]
         public async Task<VisiteurDTO> Get(int id)

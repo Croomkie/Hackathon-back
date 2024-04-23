@@ -72,10 +72,10 @@ builder.Services.AddScoped<IEcoleService, EcoleService>();
 builder.Services.AddScoped<IVisiteurService, VisiteurService>();
 builder.Services.AddScoped<IMailService, MailService>();
 builder.Services.AddScoped<IEvenementService, EvenementService>();
+builder.Services.AddScoped<IEvenementVisiteurService, EvenementVisiteurService>();
 
 //Repository
-//builder.Services.AddScoped<IUtilisateurRepository, UtilisateurRepository>();
-
+builder.Services.AddScoped<IVisiteurRepository, VisiteurRepository>();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(EntityFrameworkRepository<>));
 
 var app = builder.Build();

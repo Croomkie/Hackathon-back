@@ -16,7 +16,7 @@ namespace Hackathon.Data
         public DbSet<Atelier> Ateliers { get; set; }
         public DbSet<Vin> Vins { get; set; }
         public DbSet<Visiteur> Visiteurs { get; set; }
-        public DbSet<EvenementVisiteur> AtelierVisiteurs { get; set; }
+        public DbSet<EvenementVisiteur> EvenementVisiteur { get; set; }
         public DbSet<Ecole> Ecoles { get; set; }
         public DbSet<Evenement> Evenements { get; set; }
 
