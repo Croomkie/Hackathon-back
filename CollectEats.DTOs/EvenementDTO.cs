@@ -9,6 +9,7 @@
         public string DateLimit { get; set; } = string.Empty;
         public string Localisation { get; set; } = string.Empty;
         public int NombreParticipant { get; set; }
+        public int NombreDegustation { get; set; }
         public decimal Prix { get; set; }
 
         //Relation
