@@ -11,5 +11,6 @@
         //Relation
         public string? UtilisateurId { get; set; }
         public Utilisateur? Utilisateur { get; set; }
+        public virtual ICollection<Image>? Image { get; set; }
     }
 }

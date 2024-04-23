@@ -62,5 +62,11 @@ namespace Hackathon.Api.Controllers
         {
             await _atelierService.Delete(id);
         }
+
+        [HttpPut("{atelierId}/uploadimages"), Authorize]
+        public async Task UploadImages(int atelierId, IFormFileCollection imageFiles)
+        {
+            await _atelierService.UpdateImageAtelier(atelierId, imageFiles);
+        }
     }
 }
