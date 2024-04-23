@@ -1,5 +1,6 @@
 ﻿using Hackathon.Core.Interfaces;
 using Hackathon.DTOs;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -18,14 +19,14 @@ namespace Hackathon.Api.Controllers
         }
 
         // GET: api/<VisiteurController>
-        [HttpGet]
+        [HttpGet, Authorize]
         public async Task<IEnumerable<VisiteurDTO>> Get()
         {
             return await _visiteurService.GetAll();
         }
 
         // GET: api/<VisiteurController>
-        [HttpGet("Email/{evenementId}")]
+        [HttpGet("Email/{evenementId}"), Authorize]
         public async Task<IList<string>> GetEmail(int evenementId)
         {
             return await _visiteurService.ListeEmailVisiteurEvenement(evenementId);
@@ -46,14 +47,14 @@ namespace Hackathon.Api.Controllers
         }
 
         // PUT api/<VisiteurController>/5
-        [HttpPut("{id}")]
+        [HttpPut("{id}"), Authorize]
         public async Task Put(int id, [FromBody] VisiteurDTO visiteurDTO)
         {
             await _visiteurService.Update(id, visiteurDTO);
         }
 
         // DELETE api/<VisiteurController>/5
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}"), Authorize]
         public async Task Delete(int id)
         {
             await _visiteurService.Delete(id);
