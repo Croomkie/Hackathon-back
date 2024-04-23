@@ -8,6 +8,6 @@
         //Relation
         public int? EcoleId { get; set; }
         public Ecole? Ecole { get; set; }
-        public virtual ICollection<Atelier>? Atelier { get; set; }
+        public virtual ICollection<Evenement>? Evenement { get; set; }
     }
 }

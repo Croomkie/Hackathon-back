@@ -71,6 +71,7 @@ builder.Services.AddScoped<IVinService, VinService>();
 builder.Services.AddScoped<IEcoleService, EcoleService>();
 builder.Services.AddScoped<IVisiteurService, VisiteurService>();
 builder.Services.AddScoped<IMailService, MailService>();
+builder.Services.AddScoped<IEvenementService, EvenementService>();
 
 //Repository
 //builder.Services.AddScoped<IUtilisateurRepository, UtilisateurRepository>();

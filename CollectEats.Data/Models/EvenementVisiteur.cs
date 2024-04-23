@@ -2,9 +2,9 @@
 
 namespace Hackathon.Data.Models
 {
-    public class AtelierVisiteur
+    public class EvenementVisiteur
     {
-        public int AtelierId { get; set; }
+        public int EvenementId { get; set; }
         public int VisiteurId { get; set; }
         public Status Status { get; set; }
     }

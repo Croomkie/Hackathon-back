@@ -3,6 +3,7 @@ using System;
 using Hackathon.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Hackathon.Api.Migrations
 {
     [DbContext(typeof(HackathonDbContext))]
-    partial class HackathonDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240423101040_AjoutDateAtelier")]
+    partial class AjoutDateAtelier
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -81,7 +84,7 @@ namespace Hackathon.Api.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("EvenementId"));
 
-                    b.Property<int>("AtelierId")
+                    b.Property<int?>("AtelierId")
                         .HasColumnType("integer");
 
                     b.Property<string>("DateDebut")
@@ -413,9 +416,7 @@ namespace Hackathon.Api.Migrations
                 {
                     b.HasOne("Hackathon.Data.Models.Atelier", "Atelier")
                         .WithMany()
-                        .HasForeignKey("AtelierId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("AtelierId");
 
                     b.HasOne("Hackathon.Data.Models.Ecole", "Ecole")
                         .WithMany()

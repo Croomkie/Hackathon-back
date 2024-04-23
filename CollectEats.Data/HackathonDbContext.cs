@@ -16,17 +16,18 @@ namespace Hackathon.Data
         public DbSet<Atelier> Ateliers { get; set; }
         public DbSet<Vin> Vins { get; set; }
         public DbSet<Visiteur> Visiteurs { get; set; }
-        public DbSet<AtelierVisiteur> AtelierVisiteurs { get; set; }
+        public DbSet<EvenementVisiteur> AtelierVisiteurs { get; set; }
         public DbSet<Ecole> Ecoles { get; set; }
+        public DbSet<Evenement> Evenements { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Atelier>()
-                .HasMany(a => a.Visiteur)
-                .WithMany(v => v.Atelier)
-                .UsingEntity<AtelierVisiteur>();
+            modelBuilder.Entity<Evenement>()
+                .HasMany(e => e.Visiteur)
+                .WithMany(v => v.Evenement)
+                .UsingEntity<EvenementVisiteur>();
         }
     }
 }

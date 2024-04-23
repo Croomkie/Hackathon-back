@@ -16,6 +16,10 @@ namespace CollectEats.Api.Profiles
             CreateMap<Ecole, EcoleDTO>();
             CreateMap<EcoleDTO, Ecole>();
 
+            /***** Mappage pour Evenement *****/
+            CreateMap<Evenement, EvenementDTO>();
+            CreateMap<EvenementDTO, Evenement>();
+
             /***** Mappage pour Vin *****/
             CreateMap<Vin, VinDTO>();
             CreateMap<VinDTO, Vin>();
