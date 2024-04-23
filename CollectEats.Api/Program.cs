@@ -70,6 +70,7 @@ builder.Services.AddScoped<IAtelierService, AtelierService>();
 builder.Services.AddScoped<IVinService, VinService>();
 builder.Services.AddScoped<IEcoleService, EcoleService>();
 builder.Services.AddScoped<IVisiteurService, VisiteurService>();
+builder.Services.AddScoped<IMailService, MailService>();
 
 //Repository
 //builder.Services.AddScoped<IUtilisateurRepository, UtilisateurRepository>();

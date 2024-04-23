@@ -24,14 +24,14 @@ namespace Hackathon.Api.Controllers
 
 
         // GET: api/<AtelierController>
-        [HttpGet]
+        [HttpGet, Authorize]
         public async Task<IEnumerable<AtelierDTO>> Get()
         {
             return await _atelierService.GetAll();
         }
 
         // GET api/<AtelierController>/5
-        [HttpGet("{id}")]
+        [HttpGet("{id}"), Authorize]
         public async Task<AtelierDTO> Get(int id)
         {
             return await _atelierService.GetById(id);
@@ -50,14 +50,14 @@ namespace Hackathon.Api.Controllers
         }
 
         // PUT api/<AtelierController>/5
-        [HttpPut("{id}")]
+        [HttpPut("{id}"), Authorize]
         public async Task Put(int id, [FromBody] AtelierDTO atelierDTO)
         {
             await _atelierService.Update(id, atelierDTO);
         }
 
         // DELETE api/<AtelierController>/5
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}"), Authorize]
         public async Task Delete(int id)
         {
             await _atelierService.Delete(id);
