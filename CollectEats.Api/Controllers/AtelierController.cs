@@ -1,4 +1,6 @@
-﻿using Hackathon.Core.Interfaces;
+﻿using AutoMapper;
+using Hackathon.Core.Interfaces;
+using Hackathon.Data.Interfaces;
 using Hackathon.Data.Models;
 using Hackathon.DTOs;
 using Microsoft.AspNetCore.Authorization;
@@ -15,11 +17,15 @@ namespace Hackathon.Api.Controllers
     {
         private readonly IAtelierService _atelierService;
         private readonly UserManager<Utilisateur> _userManager;
+        private readonly IRepository<Atelier> _repository;
+        protected readonly IMapper _mapper;
 
-        public AtelierController(IAtelierService atelierService, UserManager<Utilisateur> userManager)
+        public AtelierController(IAtelierService atelierService, UserManager<Utilisateur> userManager, IRepository<Atelier> repository, IMapper mapper)
         {
             _atelierService = atelierService;
             _userManager = userManager;
+            _repository = repository;
+            _mapper = mapper;
         }
 
 
@@ -27,7 +33,7 @@ namespace Hackathon.Api.Controllers
         [HttpGet]
         public async Task<IEnumerable<AtelierDTO>> Get()
         {
-            return await _atelierService.GetAll();
+            return _mapper.Map<IEnumerable<AtelierDTO>>(await _repository.GetAllIncluding(x => x.Image));
         }
 
         // GET api/<AtelierController>/5

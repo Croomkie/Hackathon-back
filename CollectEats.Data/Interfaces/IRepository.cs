@@ -10,5 +10,6 @@ namespace Hackathon.Data.Interfaces
         Task SaveChanges();
         void Update(T entity);
         void Delete(T entity);
+        Task<IEnumerable<T>> GetAllIncluding(params Expression<Func<T, object>>[] includeProperties);
     }
 }

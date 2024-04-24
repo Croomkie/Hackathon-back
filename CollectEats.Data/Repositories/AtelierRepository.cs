@@ -1,12 +1,20 @@
 ﻿using Hackathon.Data.Interfaces;
 using Hackathon.Data.Models;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 
 namespace Hackathon.Data.Repositories
 {
     public class AtelierRepository(HackathonDbContext context) : IAtelierRepository
     {
         private readonly HackathonDbContext _context = context;
+
+        public async Task<IEnumerable<Atelier>> GetAtelier()
+        {
+            return await _context.Ateliers
+                .Include(a => a.Image)
+                .ToListAsync();
+        }
 
         public async Task UpdateImageAtelier(int atelierId, IFormFileCollection images)
         {
