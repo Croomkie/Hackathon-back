@@ -13,9 +13,5 @@ namespace Hackathon.Core.Interfaces
         Task Update(int id, TDto modelDTO);
 
         Task Delete(int id);
-
-        Task<TDto> GetByIdIncluding(Expression<Func<TDto, bool>> idPredicateDto, params Expression<Func<TDto, object>>[] includePropertiesDto);
-
-        Task<IEnumerable<TDto>> GetAllIncluding(params Expression<Func<TDto, object>>[] includePropertiesDto);
     }
 }

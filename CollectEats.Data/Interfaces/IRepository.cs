@@ -10,7 +10,5 @@ namespace Hackathon.Data.Interfaces
         Task SaveChanges();
         void Update(T entity);
         void Delete(T entity);
-        Task<T?> GetByIdIncluding(Expression<Func<T, bool>> idPredicate, params Expression<Func<T, object>>[] includeProperties);
-        Task<IEnumerable<T>> GetAllIncluding(params Expression<Func<T, object>>[] includeProperties);
     }
 }
