@@ -23,7 +23,7 @@ namespace Hackathon.Api.Controllers
         [HttpGet, AllowAnonymous]
         public async Task<IEnumerable<EvenementDTO>> Get()
         {
-            return await _evenementService.GetAll();
+            return await _evenementService.GetEvenements();
         }
 
         // GET api/<EvenementController>/5

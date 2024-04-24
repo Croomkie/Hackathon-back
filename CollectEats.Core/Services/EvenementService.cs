@@ -6,8 +6,13 @@ using Hackathon.DTOs;
 
 namespace Hackathon.Core.Services
 {
-    public class EvenementService(IRepository<Evenement> repository, IMapper mapper) : CRUDService<Evenement, EvenementDTO>(repository, mapper), IEvenementService
+    public class EvenementService(IRepository<Evenement> repository, IMapper mapper, IEvenementRepository evenementRepository) : CRUDService<Evenement, EvenementDTO>(repository, mapper), IEvenementService
     {
+        private readonly IEvenementRepository _evenementRepository = evenementRepository;
 
+        public async Task<IEnumerable<EvenementDTO>> GetEvenements()
+        {
+            return _mapper.Map<IEnumerable<EvenementDTO>>(await _evenementRepository.GetEvenement());
+        }
     }
 }

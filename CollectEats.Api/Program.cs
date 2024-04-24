@@ -78,6 +78,7 @@ builder.Services.AddScoped<IImageService, ImageService>();
 //Repository
 builder.Services.AddScoped<IVisiteurRepository, VisiteurRepository>();
 builder.Services.AddScoped<IAtelierRepository, AtelierRepository>();
+builder.Services.AddScoped<IEvenementRepository, EvenementRepository>();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(EntityFrameworkRepository<>));
 
 var app = builder.Build();
