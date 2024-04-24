@@ -43,5 +43,15 @@ namespace Hackathon.Data.Repositories
         {
             _context.Set<T>().Remove(entity);
         }
+
+        public async Task<IEnumerable<T>> GetAllIncluding(params Expression<Func<T, object>>[] includeProperties)
+        {
+            IQueryable<T> query = _context.Set<T>();
+            foreach (var includeProperty in includeProperties)
+            {
+                query = query.Include(includeProperty);
+            }
+            return await query.ToListAsync();
+        }
     }
 }
