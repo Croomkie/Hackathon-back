@@ -26,6 +26,8 @@ namespace Hackathon.Data.Repositories
                 .Include(e => e.Evenement)
                     .ThenInclude(e => e.Ecole)
                 .Include(e => e.Evenement)
+                    .ThenInclude(e => e.ImageEvenement)
+                .Include(e => e.Evenement)
                     .ThenInclude(e => e.Atelier)
                         .ThenInclude(a => a!.Image)
                 .ToListAsync();

@@ -46,5 +46,29 @@ namespace Hackathon.Data.Repositories
 
             await _context.SaveChangesAsync();
         }
+
+        public async Task UpdateImageEvenement(int evenementId, IFormFileCollection images)
+        {
+            var evenement = await _context.Evenements.FindAsync(evenementId) ?? throw new Exception("Evenement introuvable");
+
+            foreach (var image in images)
+            {
+                using var memoryStream = new MemoryStream();
+                await image.CopyToAsync(memoryStream);
+                var base64Data = Convert.ToBase64String(memoryStream.ToArray());
+
+                var imageToInsert = new ImageEvenement()
+                {
+                    EvenementId = evenement.EvenementId,
+                    ContentType = image.ContentType,
+                    Data = base64Data,
+                    FileName = image.FileName
+                };
+
+                _context.ImageEvenements.Add(imageToInsert);
+            }
+
+            await _context.SaveChangesAsync();
+        }
     }
 }

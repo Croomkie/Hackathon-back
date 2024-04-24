@@ -1,4 +1,6 @@
 ﻿using Hackathon.Core.Interfaces;
+using Hackathon.Core.Services;
+using Hackathon.Data.Models;
 using Hackathon.DTOs;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -52,6 +54,13 @@ namespace Hackathon.Api.Controllers
         public async Task Delete(int id)
         {
             await _imageEvenementService.Delete(id);
+        }
+
+        // PUT api/<ImageEvenementController>/5
+        [HttpPost("{evenementId}"), Authorize]
+        public async Task UploadImages(int evenementId, IFormFileCollection imageFiles)
+        {
+            await _imageEvenementService.UpdateImageEvenement(evenementId, imageFiles);
         }
     }
 }

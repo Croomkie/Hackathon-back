@@ -19,5 +19,6 @@
 
         public int AtelierId { get; set; }
         public AtelierDTO? Atelier { get; set; }
+        public IList<ImageEvenementDTO>? ImageEvenement { get; set; }
     }
 }
