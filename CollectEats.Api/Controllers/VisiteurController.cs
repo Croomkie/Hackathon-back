@@ -1,4 +1,7 @@
-﻿using Hackathon.Core.Interfaces;
+﻿using AutoMapper;
+using Hackathon.Core.Interfaces;
+using Hackathon.Data.Interfaces;
+using Hackathon.Data.Models;
 using Hackathon.DTOs;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -12,17 +15,21 @@ namespace Hackathon.Api.Controllers
     public class VisiteurController : ControllerBase
     {
         private readonly IVisiteurService _visiteurService;
+        private readonly IRepository<Visiteur> _repository;
+        private readonly IMapper _mapper;
 
-        public VisiteurController(IVisiteurService visiteurService)
+        public VisiteurController(IVisiteurService visiteurService, IRepository<Visiteur> repository, IMapper mapper)
         {
             _visiteurService = visiteurService;
+            _repository = repository;
+            _mapper = mapper;
         }
 
         // GET: api/<VisiteurController>
         [HttpGet, Authorize]
         public async Task<IEnumerable<VisiteurDTO>> Get()
         {
-            return await _visiteurService.GetAll();
+            return _mapper.Map<IEnumerable<VisiteurDTO>>(await _repository.GetAllIncluding(v => v.Ecole!));
         }
 
         // GET: api/<VisiteurController>
@@ -36,7 +43,8 @@ namespace Hackathon.Api.Controllers
         [HttpGet("{id}")]
         public async Task<VisiteurDTO> Get(int id)
         {
-            return await _visiteurService.GetById(id);
+            var listVisiteur = _mapper.Map<IEnumerable<VisiteurDTO>>(await _repository.GetAllIncluding(v => v.Ecole!));
+            return listVisiteur.FirstOrDefault(v => v.VisiteurId == id)!;
         }
 
         // POST api/<VisiteurController>

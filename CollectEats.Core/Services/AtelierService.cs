@@ -12,6 +12,11 @@ namespace Hackathon.Core.Services
     {
         private readonly IAtelierRepository _atelierRepository = atelierRepository;
 
+        public async Task<IEnumerable<EvenementDTO>> GetEvenementAtelier(int atelierId)
+        {
+            return _mapper.Map<IEnumerable<EvenementDTO>>(await _atelierRepository.GetEvenementAtelier(atelierId));
+        }
+
         public async Task UpdateImageAtelier(int atelierId, IFormFileCollection images)
         {
             await _atelierRepository.UpdateImageAtelier(atelierId, images);

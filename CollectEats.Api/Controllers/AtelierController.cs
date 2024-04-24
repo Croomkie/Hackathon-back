@@ -44,6 +44,13 @@ namespace Hackathon.Api.Controllers
             return listAtelier.FirstOrDefault(x => x.AtelierId == id)!;
         }
 
+        // GET api/<AtelierController>/5
+        [HttpGet("{id}/Evenement")]
+        public async Task<IEnumerable<EvenementDTO>> GetEvenementAtelier(int id)
+        {
+            return await _atelierService.GetEvenementAtelier(id);
+        }
+
         // POST api/<AtelierController>
         [HttpPost, Authorize]
         public async Task Post([FromBody] AtelierDTO atelierDTO)

@@ -16,6 +16,13 @@ namespace Hackathon.Data.Repositories
                 .ToListAsync();
         }
 
+        public async Task<IEnumerable<Evenement>> GetEvenementAtelier(int atelierId)
+        {
+            return await _context.Evenements
+                .Where(e => e.AtelierId == atelierId)
+                .ToListAsync();
+        }
+
         public async Task UpdateImageAtelier(int atelierId, IFormFileCollection images)
         {
             var atelier = await _context.Ateliers.FindAsync(atelierId) ?? throw new Exception("Atelier introuvable");
