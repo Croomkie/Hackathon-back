@@ -72,7 +72,7 @@ namespace Hackathon.Data.Repositories
         }
 
 
-        public async Task CreateAtelierWithImage(Atelier atelier, IFormFileCollection images)
+        public async Task CreateAtelierWithImage(Atelier atelier, IFormFileCollection? images)
         {
             using var transaction = await _context.Database.BeginTransactionAsync();
             try

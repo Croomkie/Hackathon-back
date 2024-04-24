@@ -1,4 +1,5 @@
 ﻿using Hackathon.Data.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace Hackathon.Data.Interfaces
 {
@@ -6,5 +7,6 @@ namespace Hackathon.Data.Interfaces
     {
         Task<IEnumerable<Evenement>> GetEvenement();
         Task<IEnumerable<EvenementVisiteur>> GetEvenementVisiteur();
+        Task CreateEvenementWithImage(Evenement evenement, IFormFileCollection? images);
     }
 }

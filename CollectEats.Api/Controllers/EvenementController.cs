@@ -36,9 +36,9 @@ namespace Hackathon.Api.Controllers
 
         // POST api/<EvenementController>
         [HttpPost]
-        public async Task Post([FromBody] EvenementDTO evenementDTO)
+        public async Task Post([FromForm] AddEvenementDTO evenementDTO)
         {
-            await _evenementService.Add(evenementDTO);
+            await _evenementService.CreateEvenementWithImage(evenementDTO);
         }
 
         // PUT api/<EvenementController>/5

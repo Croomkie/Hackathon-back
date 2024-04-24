@@ -32,6 +32,10 @@ namespace CollectEats.Api.Profiles
             CreateMap<Evenement, EvenementDTO>();
             CreateMap<EvenementDTO, Evenement>();
 
+            /***** Mappage pour Evenement *****/
+            CreateMap<Evenement, AddEvenementDTO>();
+            CreateMap<AddEvenementDTO, Evenement>();
+
             /***** Mappage pour EvenementVisiteur *****/
             CreateMap<EvenementVisiteur, EvenementVisiteurDTO>();
             CreateMap<EvenementVisiteurDTO, EvenementVisiteur>();

@@ -5,5 +5,6 @@ namespace Hackathon.Core.Interfaces
     public interface IEvenementService : ICRUDService<EvenementDTO>
     {
         Task<IEnumerable<EvenementDTO>> GetEvenements();
+        Task CreateEvenementWithImage(AddEvenementDTO addEvenementDTO);
     }
 }
