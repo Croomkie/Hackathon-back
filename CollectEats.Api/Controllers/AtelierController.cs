@@ -16,14 +16,12 @@ namespace Hackathon.Api.Controllers
     public class AtelierController : ControllerBase
     {
         private readonly IAtelierService _atelierService;
-        private readonly UserManager<Utilisateur> _userManager;
         private readonly IRepository<Atelier> _repository;
         protected readonly IMapper _mapper;
 
-        public AtelierController(IAtelierService atelierService, UserManager<Utilisateur> userManager, IRepository<Atelier> repository, IMapper mapper)
+        public AtelierController(IAtelierService atelierService, IRepository<Atelier> repository, IMapper mapper)
         {
             _atelierService = atelierService;
-            _userManager = userManager;
             _repository = repository;
             _mapper = mapper;
         }
@@ -53,14 +51,9 @@ namespace Hackathon.Api.Controllers
 
         // POST api/<AtelierController>
         [HttpPost, Authorize]
-        public async Task Post([FromBody] AtelierDTO atelierDTO)
+        public async Task Post([FromForm] AddAtelierDTO atelierDTO)
         {
-            var user = await _userManager.GetUserAsync(User);
-
-            if (user == null)
-                Unauthorized("Aucun utilisateur connecté");
-
-            await _atelierService.Add(atelierDTO);
+            await _atelierService.CreateAtelierWithImage(atelierDTO);
         }
 
         // PUT api/<AtelierController>/5

@@ -1,4 +1,5 @@
-﻿using Hackathon.DTOs;
+﻿using Hackathon.Data.Models;
+using Hackathon.DTOs;
 using Microsoft.AspNetCore.Http;
 
 namespace Hackathon.Core.Interfaces
@@ -7,5 +8,6 @@ namespace Hackathon.Core.Interfaces
     {
         Task UpdateImageAtelier(int atelierId, IFormFileCollection images);
         Task<IEnumerable<EvenementDTO>> GetEvenementAtelier(int atelierId);
+        Task CreateAtelierWithImage(AddAtelierDTO atelierDto);
     }
 }

@@ -70,5 +70,51 @@ namespace Hackathon.Data.Repositories
 
             await _context.SaveChangesAsync();
         }
+
+
+        public async Task CreateAtelierWithImage(Atelier atelier, IFormFileCollection images)
+        {
+            using var transaction = await _context.Database.BeginTransactionAsync();
+            try
+            {
+                // Effectuer les opérations de base de données ici
+                // Ajouter la commande au contexte
+                await _context.Ateliers.AddAsync(atelier);
+                await _context.SaveChangesAsync();
+
+                int atelierId = atelier.AtelierId;
+
+                if (images != null)
+                {
+                    // Ajouter les détails de la commande
+                    foreach (var image in images)
+                    {
+                        using var memoryStream = new MemoryStream();
+                        await image.CopyToAsync(memoryStream);
+                        var base64Data = Convert.ToBase64String(memoryStream.ToArray());
+
+                        var imageToInsert = new Image()
+                        {
+                            AtelierId = atelierId,
+                            ContentType = image.ContentType,
+                            Data = base64Data,
+                            FileName = image.FileName
+                        };
+
+                        _context.Images.Add(imageToInsert);
+                    }
+                }
+                await _context.SaveChangesAsync();
+
+                // Si tout se passe bien, validez la transaction
+                await transaction.CommitAsync();
+            }
+            catch
+            {
+                // En cas d'erreur, on annule la transaction
+                await transaction.RollbackAsync();
+                throw;
+            }
+        }
     }
 }
