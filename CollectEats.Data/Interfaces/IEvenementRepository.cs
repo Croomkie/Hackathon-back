@@ -5,5 +5,6 @@ namespace Hackathon.Data.Interfaces
     public interface IEvenementRepository
     {
         Task<IEnumerable<Evenement>> GetEvenement();
+        Task<IEnumerable<EvenementVisiteur>> GetEvenementVisiteur();
     }
 }
