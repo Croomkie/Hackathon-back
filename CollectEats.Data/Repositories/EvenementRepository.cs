@@ -13,7 +13,7 @@ namespace Hackathon.Data.Repositories
             return await _context.Evenements
                 .Include(e => e.Ecole)
                 .Include(e => e.Atelier)
-                    .ThenInclude(a => a.Image)
+                    .ThenInclude(a => a!.Image)
                 .ToListAsync();
         }
     }
