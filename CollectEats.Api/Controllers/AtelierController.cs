@@ -33,7 +33,7 @@ namespace Hackathon.Api.Controllers
         [HttpGet]
         public async Task<IEnumerable<AtelierDTO>> Get()
         {
-            return _mapper.Map<IEnumerable<AtelierDTO>>(await _repository.GetAllIncluding(x => x.Image));
+            return _mapper.Map<IEnumerable<AtelierDTO>>(await _repository.GetAllIncluding(x => x.Image!));
         }
 
         // GET api/<AtelierController>/5
