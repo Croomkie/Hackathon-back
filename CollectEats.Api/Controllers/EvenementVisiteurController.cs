@@ -34,6 +34,14 @@ namespace Hackathon.Api.Controllers
             return listEvenementVisiteur.FirstOrDefault(x => x.VisiteurId == visiteurId && x.EvenementId == evenementId)!;
         }
 
+        // GET api/<EvenementVisiteurController>/5
+        [HttpGet("{evenementId}")]
+        public async Task<IEnumerable<EvenementVisiteurDTO>> Get(int evenementId)
+        {
+            var listEvenementVisiteur = await _evenementVisiteurService.GetEvenementVisiteur();
+            return listEvenementVisiteur.Where(x => x.EvenementId == evenementId)!;
+        }
+
         // POST api/<EvenementVisiteurController>
         [HttpPost]
         public async Task Post([FromBody] EvenementVisiteurDTO evenementVisiteurDTO)

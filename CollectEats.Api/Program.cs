@@ -74,6 +74,7 @@ builder.Services.AddScoped<IMailService, MailService>();
 builder.Services.AddScoped<IEvenementService, EvenementService>();
 builder.Services.AddScoped<IEvenementVisiteurService, EvenementVisiteurService>();
 builder.Services.AddScoped<IImageService, ImageService>();
+builder.Services.AddScoped<IImageEvenementService, ImageEvenementService>();
 
 //Repository
 builder.Services.AddScoped<IVisiteurRepository, VisiteurRepository>();

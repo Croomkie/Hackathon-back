@@ -21,5 +21,6 @@
         public Atelier? Atelier { get; set; }
 
         public virtual ICollection<Visiteur>? Visiteur { get; set; }
+        public virtual ICollection<ImageEvenement>? ImageEvenement { get; set; }
     }
 }

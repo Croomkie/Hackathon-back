@@ -20,6 +20,10 @@ namespace CollectEats.Api.Profiles
             CreateMap<Image, ImageDTO>();
             CreateMap<ImageDTO, Image>();
 
+            /***** Mappage pour Image Evenement *****/
+            CreateMap<ImageEvenement, ImageEvenementDTO>();
+            CreateMap<ImageEvenementDTO, ImageEvenement>();
+
             /***** Mappage pour Evenement *****/
             CreateMap<Evenement, EvenementDTO>();
             CreateMap<EvenementDTO, Evenement>();
