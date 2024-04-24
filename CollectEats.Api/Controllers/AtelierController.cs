@@ -40,7 +40,8 @@ namespace Hackathon.Api.Controllers
         [HttpGet("{id}")]
         public async Task<AtelierDTO> Get(int id)
         {
-            return await _atelierService.GetById(id);
+            var listAtelier = _mapper.Map<IEnumerable<AtelierDTO>>(await _repository.GetAllIncluding(x => x.Image!));
+            return listAtelier.FirstOrDefault(x => x.AtelierId == id)!;
         }
 
         // POST api/<AtelierController>
