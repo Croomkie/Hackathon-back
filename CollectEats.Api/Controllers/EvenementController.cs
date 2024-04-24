@@ -30,7 +30,8 @@ namespace Hackathon.Api.Controllers
         [HttpGet("{id}"), AllowAnonymous]
         public async Task<EvenementDTO> Get(int id)
         {
-            return await _evenementService.GetById(id);
+            var listEvenement = await _evenementService.GetEvenements();
+            return listEvenement.FirstOrDefault(x => x.EvenementId == id)!;
         }
 
         // POST api/<EvenementController>
