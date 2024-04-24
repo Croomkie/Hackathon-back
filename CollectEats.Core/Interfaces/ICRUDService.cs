@@ -1,4 +1,6 @@
-﻿namespace Hackathon.Core.Interfaces
+﻿using System.Linq.Expressions;
+
+namespace Hackathon.Core.Interfaces
 {
     public interface ICRUDService<TDto>
     {
@@ -11,5 +13,9 @@
         Task Update(int id, TDto modelDTO);
 
         Task Delete(int id);
+
+        Task<TDto> GetByIdIncluding(Expression<Func<TDto, bool>> idPredicateDto, params Expression<Func<TDto, object>>[] includePropertiesDto);
+
+        Task<IEnumerable<TDto>> GetAllIncluding(params Expression<Func<TDto, object>>[] includePropertiesDto);
     }
 }

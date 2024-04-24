@@ -24,14 +24,14 @@ namespace Hackathon.Api.Controllers
 
 
         // GET: api/<AtelierController>
-        [HttpGet, Authorize]
+        [HttpGet]
         public async Task<IEnumerable<AtelierDTO>> Get()
         {
             return await _atelierService.GetAll();
         }
 
         // GET api/<AtelierController>/5
-        [HttpGet("{id}"), Authorize]
+        [HttpGet("{id}")]
         public async Task<AtelierDTO> Get(int id)
         {
             return await _atelierService.GetById(id);

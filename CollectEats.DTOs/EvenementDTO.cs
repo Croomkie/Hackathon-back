@@ -4,6 +4,7 @@
     {
         public int EvenementId { get; set; }
         public string EvenementName { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
         public string DateDebut { get; set; } = string.Empty;
         public string DateFin { get; set; } = string.Empty;
         public string DateLimit { get; set; } = string.Empty;

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Hackathon.Core.Interfaces;
 using Hackathon.Data.Interfaces;
+using System.Linq.Expressions;
 
 namespace Hackathon.Core.Services
 {
@@ -53,6 +54,23 @@ namespace Hackathon.Core.Services
                 _repository.Delete(restaurant);
                 await _repository.SaveChanges();
             }
+        }
+
+        public async Task<TDto> GetByIdIncluding(Expression<Func<TDto, bool>> idPredicateDto, params Expression<Func<TDto, object>>[] includePropertiesDto)
+        {
+            var idPredicate = _mapper.Map<Expression<Func<T, bool>>>(idPredicateDto);
+            var includeProperties = includePropertiesDto.Select(dtoExp => _mapper.Map<Expression<Func<T, object>>>(dtoExp)).ToArray();
+            var modelWithInclude = await _repository.GetByIdIncluding(idPredicate, includeProperties);
+            return _mapper.Map<TDto>(modelWithInclude);
+        }
+
+
+        public async Task<IEnumerable<TDto>> GetAllIncluding(params Expression<Func<TDto, object>>[] includePropertiesDto)
+        {
+            // Convertir les expressions pour les propriétés d'inclusion
+            var includeProperties = includePropertiesDto.Select(dtoProp => _mapper.Map<Expression<Func<T, object>>>(dtoProp)).ToArray();
+            var models = await _repository.GetAllIncluding(includeProperties);
+            return models.Select(_mapper.Map<TDto>);
         }
     }
 }
