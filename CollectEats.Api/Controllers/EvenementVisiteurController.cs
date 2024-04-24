@@ -27,10 +27,11 @@ namespace Hackathon.Api.Controllers
         }
 
         // GET api/<EvenementVisiteurController>/5
-        [HttpGet("{id}")]
-        public async Task<EvenementVisiteurDTO> Get(int id)
+        [HttpGet("{visiteurId}/{evenementId}")]
+        public async Task<EvenementVisiteurDTO> Get(int visiteurId, int evenementId)
         {
-            return await _evenementVisiteurService.GetById(id);
+            var listEvenementVisiteur = await _evenementVisiteurService.GetEvenementVisiteur();
+            return listEvenementVisiteur.FirstOrDefault(x => x.VisiteurId == visiteurId && x.EvenementId == evenementId)!;
         }
 
         // POST api/<EvenementVisiteurController>
