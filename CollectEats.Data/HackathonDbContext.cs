@@ -21,6 +21,7 @@ namespace Hackathon.Data
         public DbSet<Evenement> Evenements { get; set; }
         public DbSet<Image> Images { get; set; }
         public DbSet<ImageEvenement> ImageEvenements { get; set; }
+        public DbSet<HomeDescription> HomeDescriptions { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

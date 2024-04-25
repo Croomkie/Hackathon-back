@@ -84,18 +84,25 @@ namespace Hackathon.Data.Repositories
             using var transaction = await _context.Database.BeginTransactionAsync();
             try
             {
-                Visiteur visiteur = new()
+                int visiteurId;
+                //Vérifier si le visiteur existe
+                Visiteur? visiteurExist = await _context.Visiteurs.SingleOrDefaultAsync(v => v.Email == email);
+                visiteurId = visiteurExist != null ? visiteurExist.VisiteurId : 0;
+
+                if (visiteurExist == null)
                 {
-                    Email = email,
-                    EcoleId = ecoleId
-                };
+                    Visiteur visiteur = new()
+                    {
+                        Email = email,
+                        EcoleId = ecoleId
+                    };
 
-                //Creation du visiteur
-                await _context.Visiteurs.AddAsync(visiteur);
-                await _context.SaveChangesAsync();
+                    //Creation du visiteur
+                    await _context.Visiteurs.AddAsync(visiteur);
+                    await _context.SaveChangesAsync();
 
-
-                int visiteurId = visiteur.VisiteurId;
+                    visiteurId = visiteur.VisiteurId;
+                }
 
                 EvenementVisiteur evenementVisiteur = new()
                 {

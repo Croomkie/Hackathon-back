@@ -12,6 +12,10 @@ namespace CollectEats.Api.Profiles
             CreateMap<Atelier, AtelierDTO>();
             CreateMap<AtelierDTO, Atelier>();
 
+            /***** Mappage pour Atelier *****/
+            CreateMap<HomeDescription, HomeDescriptionDTO>();
+            CreateMap<HomeDescriptionDTO, HomeDescription>();
+
             /***** Mappage pour AddAtelier *****/
             CreateMap<Atelier, AddAtelierDTO>();
             CreateMap<AddAtelierDTO, Atelier>();
