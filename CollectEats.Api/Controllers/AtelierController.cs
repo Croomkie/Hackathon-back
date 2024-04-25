@@ -62,13 +62,6 @@ namespace Hackathon.Api.Controllers
             await _atelierService.UpdateAtelierWithImage(id, atelierDTO);
         }
 
-        //// PUT api/<AtelierController>/5
-        //[HttpPut("{id}"), Authorize]
-        //public async Task Put(int id, [FromBody] AtelierDTO atelierDTO)
-        //{
-        //    await _atelierService.Update(id, atelierDTO);
-        //}
-
         // DELETE api/<AtelierController>/5
         [HttpDelete("{id}"), Authorize]
         public async Task Delete(int id)

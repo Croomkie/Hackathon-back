@@ -11,6 +11,7 @@
         public string Localisation { get; set; } = string.Empty;
         public int NombreParticipant { get; set; }
         public int NombreDegustation { get; set; }
+        public string? Password { get; set; }
         public decimal Prix { get; set; }
 
         //Relation
