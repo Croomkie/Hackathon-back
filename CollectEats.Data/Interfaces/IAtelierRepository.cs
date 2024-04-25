@@ -9,5 +9,6 @@ namespace Hackathon.Data.Interfaces
         Task UpdateImageEvenement(int evenementId, IFormFileCollection images);
         Task<IEnumerable<Evenement>> GetEvenementAtelier(int atelierId);
         Task CreateAtelierWithImage(Atelier atelier, IFormFileCollection? images);
+        Task UpdateAtelierWithImage(int id, Atelier updatedAtelier, IFormFileCollection? images);
     }
 }

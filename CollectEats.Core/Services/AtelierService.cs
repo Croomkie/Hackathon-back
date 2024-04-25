@@ -23,6 +23,11 @@ namespace Hackathon.Core.Services
             return _mapper.Map<IEnumerable<EvenementDTO>>(await _atelierRepository.GetEvenementAtelier(atelierId));
         }
 
+        public async Task UpdateAtelierWithImage(int id, AddAtelierDTO atelierDto)
+        {
+            await _atelierRepository.UpdateAtelierWithImage(id, _mapper.Map<Atelier>(atelierDto), atelierDto.ImageFiles);
+        }
+
         public async Task UpdateImageAtelier(int atelierId, IFormFileCollection images)
         {
             await _atelierRepository.UpdateImageAtelier(atelierId, images);

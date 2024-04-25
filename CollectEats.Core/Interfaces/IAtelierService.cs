@@ -9,5 +9,6 @@ namespace Hackathon.Core.Interfaces
         Task UpdateImageAtelier(int atelierId, IFormFileCollection images);
         Task<IEnumerable<EvenementDTO>> GetEvenementAtelier(int atelierId);
         Task CreateAtelierWithImage(AddAtelierDTO atelierDto);
+        Task UpdateAtelierWithImage(int id, AddAtelierDTO atelierDto);
     }
 }

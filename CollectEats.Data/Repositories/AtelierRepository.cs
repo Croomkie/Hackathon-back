@@ -2,6 +2,7 @@
 using Hackathon.Data.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace Hackathon.Data.Repositories
 {
@@ -20,6 +21,7 @@ namespace Hackathon.Data.Repositories
         {
             return await _context.Evenements
                 .Where(e => e.AtelierId == atelierId)
+                .Include(e => e.ImageEvenement)
                 .ToListAsync();
         }
 
@@ -116,5 +118,43 @@ namespace Hackathon.Data.Repositories
                 throw;
             }
         }
+
+        public async Task UpdateAtelierWithImage(int id, Atelier updatedAtelier, IFormFileCollection? images)
+        {
+            updatedAtelier.AtelierId = id;
+
+            // Attacher l'objet updatedAtelier au contexte
+            _context.Ateliers.Attach(updatedAtelier);
+
+            // Marquer l'objet comme modifié
+            _context.Entry(updatedAtelier).State = EntityState.Modified;
+
+            // Sauvegarder les modifications de l'atelier
+            await _context.SaveChangesAsync();
+
+            // Traitement des images
+            if (images != null)
+            {
+                foreach (var image in images)
+                {
+                    using var memoryStream = new MemoryStream();
+                    await image.CopyToAsync(memoryStream);
+                    var base64Data = Convert.ToBase64String(memoryStream.ToArray());
+
+                    var imageToInsert = new Image()
+                    {
+                        AtelierId = updatedAtelier.AtelierId,
+                        ContentType = image.ContentType,
+                        Data = base64Data,
+                        FileName = image.FileName
+                    };
+
+                    _context.Images.Add(imageToInsert);
+                }
+                // Sauvegarder les nouvelles images ajoutées
+                await _context.SaveChangesAsync();
+            }
+        }
+
     }
 }
