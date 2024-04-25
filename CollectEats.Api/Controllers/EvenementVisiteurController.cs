@@ -44,9 +44,9 @@ namespace Hackathon.Api.Controllers
 
         // POST api/<EvenementVisiteurController>
         [HttpPost]
-        public async Task Post([FromBody] EvenementVisiteurDTO evenementVisiteurDTO)
+        public async Task Post(string email, int evenementId, int? ecoleId)
         {
-            await _evenementVisiteurService.Add(evenementVisiteurDTO);
+            await _evenementVisiteurService.CreateEvenementVisiteur(email, evenementId, ecoleId);
         }
 
         // PUT api/<EvenementVisiteurController>/5

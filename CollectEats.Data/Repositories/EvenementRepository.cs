@@ -2,6 +2,7 @@
 using Hackathon.Data.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Hackathon.Data.Repositories
 {
@@ -65,6 +66,46 @@ namespace Hackathon.Data.Repositories
                     }
                 }
 
+                await _context.SaveChangesAsync();
+
+                // Si tout se passe bien, validez la transaction
+                await transaction.CommitAsync();
+            }
+            catch
+            {
+                // En cas d'erreur, on annule la transaction
+                await transaction.RollbackAsync();
+                throw;
+            }
+        }
+
+        public async Task CreateEvenementVisiteur(string email, int evenementId, int? ecoleId)
+        {
+            using var transaction = await _context.Database.BeginTransactionAsync();
+            try
+            {
+                Visiteur visiteur = new()
+                {
+                    Email = email,
+                    EcoleId = ecoleId
+                };
+
+                //Creation du visiteur
+                await _context.Visiteurs.AddAsync(visiteur);
+                await _context.SaveChangesAsync();
+
+
+                int visiteurId = visiteur.VisiteurId;
+
+                EvenementVisiteur evenementVisiteur = new()
+                {
+                    EvenementId = evenementId,
+                    VisiteurId = visiteurId,
+                    Status = Shared.Enum.Status.EnAttente
+                };
+
+                //Creation de l'evenementVisiteur
+                await _context.EvenementVisiteur.AddAsync(evenementVisiteur);
                 await _context.SaveChangesAsync();
 
                 // Si tout se passe bien, validez la transaction

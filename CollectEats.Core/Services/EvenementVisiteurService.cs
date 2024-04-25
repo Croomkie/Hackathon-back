@@ -10,6 +10,11 @@ namespace Hackathon.Core.Services
     {
         private readonly IEvenementRepository _evenementRepository = evenementRepository;
 
+        public async Task CreateEvenementVisiteur(string email, int evenementId, int? ecoleId)
+        {
+            await _evenementRepository.CreateEvenementVisiteur(email, evenementId, ecoleId);
+        }
+
         public async Task<IEnumerable<EvenementVisiteurDTO>> GetEvenementVisiteur()
         {
             return _mapper.Map<IEnumerable<EvenementVisiteurDTO>>(await _evenementRepository.GetEvenementVisiteur());
