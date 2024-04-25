@@ -50,18 +50,11 @@ namespace Hackathon.Api.Controllers
             await _evenementVisiteurService.CreateEvenementVisiteur(email, evenementId, ecoleId);
         }
 
-        // POST api/<EvenementVisiteurController>
-        [HttpPost]
-        public async Task Post(int evenementId, int visiteurId, Status status)
+        // PUT api/<EvenementVisiteurController>/5
+        [HttpPut]
+        public async Task Put(int evenementId, int visiteurId, Status status)
         {
             await _evenementVisiteurService.UpdateEvenementVisiteur(evenementId, visiteurId, status);
-        }
-
-        // PUT api/<EvenementVisiteurController>/5
-        [HttpPut("{id}")]
-        public async Task Put(int id, [FromBody] EvenementVisiteurDTO evenementVisiteurDTO)
-        {
-            await _evenementVisiteurService.Update(id, evenementVisiteurDTO);
         }
 
         // DELETE api/<EvenementVisiteurController>/5
