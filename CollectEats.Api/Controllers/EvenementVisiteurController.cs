@@ -1,5 +1,6 @@
 ﻿using Hackathon.Core.Interfaces;
 using Hackathon.DTOs;
+using Hackathon.Shared.Enum;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -47,6 +48,13 @@ namespace Hackathon.Api.Controllers
         public async Task Post(string email, int evenementId, int? ecoleId)
         {
             await _evenementVisiteurService.CreateEvenementVisiteur(email, evenementId, ecoleId);
+        }
+
+        // POST api/<EvenementVisiteurController>
+        [HttpPost]
+        public async Task Post(int evenementId, int visiteurId, Status status)
+        {
+            await _evenementVisiteurService.UpdateEvenementVisiteur(evenementId, visiteurId, status);
         }
 
         // PUT api/<EvenementVisiteurController>/5

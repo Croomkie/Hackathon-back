@@ -3,6 +3,7 @@ using Hackathon.Core.Interfaces;
 using Hackathon.Data.Interfaces;
 using Hackathon.Data.Models;
 using Hackathon.DTOs;
+using Hackathon.Shared.Enum;
 
 namespace Hackathon.Core.Services
 {
@@ -18,6 +19,11 @@ namespace Hackathon.Core.Services
         public async Task<IEnumerable<EvenementVisiteurDTO>> GetEvenementVisiteur()
         {
             return _mapper.Map<IEnumerable<EvenementVisiteurDTO>>(await _evenementRepository.GetEvenementVisiteur());
+        }
+
+        public async Task UpdateEvenementVisiteur(int evenementId, int visiteurId, Status status)
+        {
+            await _evenementRepository.UpdateEvenementVisiteur(evenementId, visiteurId, status);
         }
     }
 }

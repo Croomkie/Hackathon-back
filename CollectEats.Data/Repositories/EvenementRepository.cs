@@ -1,5 +1,6 @@
 ﻿using Hackathon.Data.Interfaces;
 using Hackathon.Data.Models;
+using Hackathon.Shared.Enum;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using static System.Net.Mime.MediaTypeNames;
@@ -123,6 +124,17 @@ namespace Hackathon.Data.Repositories
                 // En cas d'erreur, on annule la transaction
                 await transaction.RollbackAsync();
                 throw;
+            }
+        }
+
+        public async Task UpdateEvenementVisiteur(int evenementId, int visiteurId, Status status)
+        {
+            EvenementVisiteur? evenementVisiteur = await _context.EvenementVisiteur.SingleOrDefaultAsync(x => x.EvenementId == evenementId && x.VisiteurId == visiteurId);
+
+            if (evenementVisiteur != null)
+            {
+                evenementVisiteur.Status = status;
+                await _context.SaveChangesAsync();
             }
         }
     }
