@@ -4,6 +4,6 @@
     {
         EnAttente = 0,
         Valide = 1,
-        Refuse = 3,
+        Refuse = 2,
     }
 }
