@@ -48,13 +48,6 @@ namespace Hackathon.Api.Controllers
             await _evenementService.UpdateEvenementWithImage(id, evenementDTO);
         }
 
-        // PUT api/<EvenementController>/5
-        [HttpPut("{id}")]
-        public async Task Put(int id, [FromBody] EvenementDTO evenementDTO)
-        {
-            await _evenementService.Update(id, evenementDTO);
-        }
-
         // DELETE api/<EvenementController>/5
         [HttpDelete("{id}")]
         public async Task Delete(int id)
