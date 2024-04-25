@@ -20,5 +20,10 @@ namespace Hackathon.Core.Services
             var evenement = _mapper.Map<Evenement>(addEvenementDTO);
             await _evenementRepository.CreateEvenementWithImage(evenement, addEvenementDTO.ImageFiles);
         }
+
+        public async Task UpdateEvenementWithImage(int id, AddEvenementDTO addEvenementDTO)
+        {
+            await _evenementRepository.UpdateEvenementWithImage(id, _mapper.Map<Evenement>(addEvenementDTO), addEvenementDTO.ImageFiles);
+        }
     }
 }

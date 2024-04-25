@@ -6,5 +6,6 @@ namespace Hackathon.Core.Interfaces
     {
         Task<IEnumerable<EvenementDTO>> GetEvenements();
         Task CreateEvenementWithImage(AddEvenementDTO addEvenementDTO);
+        Task UpdateEvenementWithImage(int id, AddEvenementDTO addEvenementDTO);
     }
 }

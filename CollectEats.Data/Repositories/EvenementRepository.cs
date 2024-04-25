@@ -137,5 +137,42 @@ namespace Hackathon.Data.Repositories
                 await _context.SaveChangesAsync();
             }
         }
+
+        public async Task UpdateEvenementWithImage(int id, Evenement evenement, IFormFileCollection? images)
+        {
+            evenement.EvenementId = id;
+
+            // Attacher l'objet updatedAtelier au contexte
+            _context.Evenements.Attach(evenement);
+
+            // Marquer l'objet comme modifié
+            _context.Entry(evenement).State = EntityState.Modified;
+
+            // Sauvegarder les modifications de l'atelier
+            await _context.SaveChangesAsync();
+
+            // Traitement des images
+            if (images != null)
+            {
+                foreach (var image in images)
+                {
+                    using var memoryStream = new MemoryStream();
+                    await image.CopyToAsync(memoryStream);
+                    var base64Data = Convert.ToBase64String(memoryStream.ToArray());
+
+                    var imageToInsert = new ImageEvenement()
+                    {
+                        EvenementId = evenement.EvenementId,
+                        ContentType = image.ContentType,
+                        Data = base64Data,
+                        FileName = image.FileName
+                    };
+
+                    _context.ImageEvenements.Add(imageToInsert);
+                }
+                // Sauvegarder les nouvelles images ajoutées
+                await _context.SaveChangesAsync();
+            }
+        }
     }
 }

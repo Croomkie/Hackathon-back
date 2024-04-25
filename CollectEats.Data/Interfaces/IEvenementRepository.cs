@@ -11,5 +11,6 @@ namespace Hackathon.Data.Interfaces
         Task CreateEvenementWithImage(Evenement evenement, IFormFileCollection? images);
         Task CreateEvenementVisiteur(string email, int evenementId, int? ecoleId);
         Task UpdateEvenementVisiteur(int evenementId, int visiteurId, Status status);
+        Task UpdateEvenementWithImage(int id, Evenement evenement, IFormFileCollection? images);
     }
 }
