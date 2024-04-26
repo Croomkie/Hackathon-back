@@ -9,7 +9,6 @@ namespace Hackathon.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
     public class EcoleController : ControllerBase
     {
         private readonly IEcoleService _ecoleService;

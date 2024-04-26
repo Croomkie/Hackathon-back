@@ -10,7 +10,6 @@ namespace Hackathon.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
     public class EvenementVisiteurController : ControllerBase
     {
         private readonly IEvenementVisiteurService _evenementVisiteurService;
