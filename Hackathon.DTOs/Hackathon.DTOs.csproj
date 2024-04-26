@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CollectEats.Shared\Hackathon.Shared.csproj" />
+    <ProjectReference Include="..\Hackathon.Shared\Hackathon.Shared.csproj" />
   </ItemGroup>
 
 </Project>

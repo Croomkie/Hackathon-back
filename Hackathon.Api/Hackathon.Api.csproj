@@ -29,9 +29,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CollectEats.Core\Hackathon.Core.csproj" />
-    <ProjectReference Include="..\CollectEats.Data\Hackathon.Data.csproj" />
-    <ProjectReference Include="..\CollectEats.DTOs\Hackathon.DTOs.csproj" />
+    <ProjectReference Include="..\Hackathon.Core\Hackathon.Core.csproj" />
+    <ProjectReference Include="..\Hackathon.Data\Hackathon.Data.csproj" />
+    <ProjectReference Include="..\Hackathon.DTOs\Hackathon.DTOs.csproj" />
+    <ProjectReference Include="..\Hackathon.Core\Hackathon.Core.csproj" />
+    <ProjectReference Include="..\Hackathon.Data\Hackathon.Data.csproj" />
+    <ProjectReference Include="..\Hackathon.DTOs\Hackathon.DTOs.csproj" />
+    <ProjectReference Include="..\Hackathon.Shared\Hackathon.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -3,20 +3,20 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34322.80
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hackathon.Api", "CollectEats.Api\Hackathon.Api.csproj", "{E1C57E99-0B24-4B92-8A7D-479E713F50CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hackathon.Api", "Hackathon.Api\Hackathon.Api.csproj", "{E1C57E99-0B24-4B92-8A7D-479E713F50CF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hackathon.Core", "CollectEats.Core\Hackathon.Core.csproj", "{E282ED9A-091B-4E65-91E1-8137038A01A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hackathon.Core", "Hackathon.Core\Hackathon.Core.csproj", "{E282ED9A-091B-4E65-91E1-8137038A01A1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hackathon.Data", "CollectEats.Data\Hackathon.Data.csproj", "{C5EA601A-8BD5-4836-92F7-810724C1B1C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hackathon.Data", "Hackathon.Data\Hackathon.Data.csproj", "{C5EA601A-8BD5-4836-92F7-810724C1B1C0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hackathon.Shared", "CollectEats.Shared\Hackathon.Shared.csproj", "{001A9399-E1B9-4983-B88B-B2BA32AF0C49}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hackathon.Shared", "Hackathon.Shared\Hackathon.Shared.csproj", "{001A9399-E1B9-4983-B88B-B2BA32AF0C49}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Éléments de solution", "Éléments de solution", "{BB9AC38E-008C-4F02-96D1-2F5D5308B51A}"
 	ProjectSection(SolutionItems) = preProject
 		global.json = global.json
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hackathon.DTOs", "CollectEats.DTOs\Hackathon.DTOs.csproj", "{F3404F12-3BE0-4248-823A-0F5ECE07A0A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hackathon.DTOs", "Hackathon.DTOs\Hackathon.DTOs.csproj", "{F3404F12-3BE0-4248-823A-0F5ECE07A0A1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

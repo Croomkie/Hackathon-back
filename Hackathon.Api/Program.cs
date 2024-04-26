@@ -1,4 +1,4 @@
-using CollectEats.Api.Profiles;
+using Hackathon.Api.Profiles;
 using Hackathon.Core.Interfaces;
 using Hackathon.Core.Services;
 using Hackathon.Data;
@@ -99,7 +99,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI(c =>
     {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "CollectEats");
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Hackathon");
     });
 }
 

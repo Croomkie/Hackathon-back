@@ -2,7 +2,7 @@
 using Hackathon.Data.Models;
 using Hackathon.DTOs;
 
-namespace CollectEats.Api.Profiles
+namespace Hackathon.Api.Profiles
 {
     public class MappingProfile : Profile
     {

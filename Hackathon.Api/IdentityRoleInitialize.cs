@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace CollectEats.Api
+namespace Hackathon.Api
 {
     public class IdentityRoleInitialize
     {
