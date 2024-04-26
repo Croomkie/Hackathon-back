@@ -364,6 +364,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
-/CollectEats.Api/appsettings.Development.json
-/CollectEats.Api/%USERPROFILE%/.aspnet/https/aspnetapp.pfx
-/CollectEats.Api/%USERPROFILE%/.aspnet/https/dockerdemo.pfx
+/Hackathon.Api/appsettings.Development.json
+/Hackathon.Api/%USERPROFILE%/.aspnet/https/aspnetapp.pfx
+/Hackathon.Api/%USERPROFILE%/.aspnet/https/dockerdemo.pfx
