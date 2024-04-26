@@ -18,7 +18,7 @@ namespace Hackathon.Api.Controllers
             _configuration = configuration;
         }
 
-        [HttpPost, Authorize]
+        [HttpPost]
         public async Task Post([FromForm] MailDTO mailDTO)
         {
             string? email = _configuration["Smtp:email"];
